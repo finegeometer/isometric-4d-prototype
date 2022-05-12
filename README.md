@@ -1,5 +1,7 @@
 # 4D Isometric Rendering Prototype
 
+[Try it here!](https://finegeometer.github.io/isometric-4d-prototype/)
+
 ## Table of Contents
 
 - [Idea](#idea)

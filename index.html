@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title Main>4D Isometric Projection</title>
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <script>
+        var app = Elm.Main.init();
+
+        document.addEventListener('wheel', e => app.ports.onWheel.send(e.deltaY), false);
+
+        app.ports.ready.subscribe(_ => {
+            var canvas = document.getElementById("canvas")
+
+            function locked() {
+                return document.pointerLockElement === canvas;
+            }
+
+            canvas.addEventListener("click", _ => {
+                if (!locked()) {
+                    canvas.requestPointerLock();
+                }
+            })
+
+            document.addEventListener('pointerlockchange', _ => app.ports.onPointerLock.send(locked()), false);
+        })
+    </script>
+</body>
+
+</html>
